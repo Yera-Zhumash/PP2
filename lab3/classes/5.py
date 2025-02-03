@@ -1,16 +1,15 @@
-import math
+class Account:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
 
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"Deposited {amount}. New balance: {self.balance}")
 
-    def show(self):
-        print(f"({self.x}, {self.y})")
-
-    def move(self, new_x, new_y):
-        self.x = new_x
-        self.y = new_y
-
-    def dist(self, other_point):
-        return math.sqrt((self.x - other_point.x) ** 2 + (self.y - other_point.y) ** 2)
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient balance!")
+        else:
+            self.balance -= amount
+            print(f"Withdrew {amount}. New balance: {self.balance}")

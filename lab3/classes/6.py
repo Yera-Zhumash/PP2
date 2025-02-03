@@ -1,16 +1,11 @@
-import math
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n ** 0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+numbers = [10, 15, 3, 7, 21, 29, 31]
+prime_numbers = list(filter(lambda x: is_prime(x), numbers))
 
-    def show(self):
-        print(f"({self.x}, {self.y})")
-
-    def move(self, new_x, new_y):
-        self.x = new_x
-        self.y = new_y
-
-    def dist(self, other_point):
-        return math.sqrt((self.x - other_point.x) ** 2 + (self.y - other_point.y) ** 2)
